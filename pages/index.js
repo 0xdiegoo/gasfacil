@@ -38,7 +38,7 @@ const CompararInputs = () => {
       const longEquivalente = parseInt(updatedInputs[i]['Longitud equivalente']);
       const distanciaMedidor = parseInt(updatedInputs[i]['Distancia a medidor'])
       const result = longEquivalente + distanciaMedidor;
-      updatedInputs[i]['Longitud rectificada'] = result.toString();
+      updatedInputs[i]['Longitud rectificada'] = result.toFixed();
     };
 
     setInputs(updatedInputs);
