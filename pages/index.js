@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { diametros } from '../src/diametros';
 import CaidaPresion from '../components/calculadora'
 import { columnNames } from '../src/columnas';
-
+import styles from './styles.module.css'
 const CompararInputs = () => {
   const [inputs, setInputs] = useState(Array(20).fill().map(() => ({})));
 
@@ -32,6 +32,18 @@ const CompararInputs = () => {
     setInputs(updatedInputs);
   };
 
+  const compararDatos3 = () => {
+    const updatedInputs = [...inputs];
+    for (let i = 0; i < updatedInputs.length; i++) {
+      const longEquivalente = parseInt(updatedInputs[i]['Longitud equivalente']);
+      const distanciaMedidor = parseInt(updatedInputs[i]['Distancia a medidor'])
+      const result = longEquivalente + distanciaMedidor;
+      updatedInputs[i]['Longitud rectificada'] = result.toString();
+    };
+
+    setInputs(updatedInputs);
+  }
+
   const compararDatos2 = () => {
     const updatedInputs = [...inputs];
     for (let i = 0; i < updatedInputs.length; i++) {
@@ -40,14 +52,14 @@ const CompararInputs = () => {
   
       let diametroFinal = '';
       let consumoFinal = '';
-      let porcentajeFinal = '';
 
-        for (let i = 0; i < updatedInputs.length; i++) {
-          const value = parseInt(updatedInputs[i].Consumo);
-          const divisor = parseInt(updatedInputs[i]['Caudal Final'])
-          const result = value / divisor;
-          updatedInputs[i]['% Final'] = result.toString();
-        };
+      for (let i = 0; i < updatedInputs.length; i++) {
+        const value = parseInt(updatedInputs[i].Consumo);
+        const divisor = parseInt(updatedInputs[i]['Caudal Final'])
+        const result = value / divisor;
+        updatedInputs[i]['% Final'] = result.toString();
+      };
+     
   
       for (let j = 0; j < diametros.length; j++) {
         const diametro = diametros[j][0];
@@ -88,42 +100,60 @@ const CompararInputs = () => {
 
   const renderInputs = () => {
     return (
-      <table>
-        <thead>
-          <tr>
-            {columnNames.map((columnName) => (
-              <th key={columnName}>{columnName}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {inputs.map((input, index) => (
-            <tr key={index}>
+      <div className={styles.tableContainer}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
               {columnNames.map((columnName) => (
-                <td key={columnName}>
-                  <input
-                    type="text"
-                    value={input[columnName] || ''}
-                    onChange={(e) => handleInputChange(e, index, columnName)}
-                  />
-                </td>
+                <th key={columnName}>{columnName}</th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {inputs.map((input, index) => (
+              <tr key={index}>
+                {columnNames.map((columnName) => (
+                  <td key={columnName}>
+                    <input
+                      type="text"
+                      value={input[columnName] || ''}
+                      onChange={(e) => handleInputChange(e, index, columnName)}
+                      className={columnName === '% Final' ? styles.minWidthInput : '' }
+                    />
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {renderInputs()}
-      <button onClick={compararDatos}>Diametro Prov</button>
-      <button onClick={dividirInput2}>Dividir</button>
-      <button onClick={compararDatos2}>Diametro Final</button>
-      <CaidaPresion/>
+      <div className={styles.buttonsContainer}>
+      <button className={styles.button} onClick={dividirInput2}>
+          Dividir
+        </button>
+        <button className={styles.button} onClick={compararDatos}>
+          Diametro Prov
+        </button>
+      
+        <button className={styles.button} onClick={compararDatos3}>
+          Longitud Rectificada
+        </button>
+        <button className={styles.button} onClick={compararDatos2}>
+          Diametro Final
+        </button>
+      </div>
+      <div className={styles.calculadoraContainer}>
+        <CaidaPresion />
+      </div>
     </div>
   );
 };
+
 
 export default CompararInputs;

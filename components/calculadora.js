@@ -75,7 +75,36 @@ const CaidaPresion = () => {
   };
 
   const guardarObjetoConstruido = () => {
-    const nuevoObjetoConstruido = { nombreArtefacto, accesorios, presion };
+    let presionTotal = 0;
+    const accesoriosConPresion = {};
+  
+    // Calcula la presión total y agrega el resultado a cada accesorio
+    for (const accesorio in accesorios) {
+      const accesorioDiametros = accesorios[accesorio];
+      const accesorioConPresion = {};
+  
+      for (const diametro in accesorioDiametros) {
+        const cantidad = accesorioDiametros[diametro] || 0;
+        const valor = accesoriosValores[accesorio][diametro] || 0;
+        const presionAccesorio = cantidad * valor;
+  
+        accesorioConPresion[diametro] = {
+          cantidad,
+          presion: presionAccesorio
+        };
+  
+        presionTotal += presionAccesorio;
+      }
+  
+      accesoriosConPresion[accesorio] = accesorioConPresion;
+    }
+  
+    const nuevoObjetoConstruido = {
+      nombreArtefacto,
+      accesorios: accesoriosConPresion,
+      presion: presionTotal
+    };
+  
     setObjetosConstruidos((prevObjetosConstruidos) => [
       ...prevObjetosConstruidos,
       nuevoObjetoConstruido
@@ -162,31 +191,31 @@ const CaidaPresion = () => {
       <p>Caída de Presión Total: {presion}</p>
 
       {objetosConstruidos.length > 0 && (
-        <div>
-          <h4>Objetos Construidos:</h4>
-          {objetosConstruidos.map((objeto, index) => (
-            <div key={index}>
-              <h5>{objeto.nombreArtefacto}</h5>
-              <p>Longitud Equivalente: {objeto.presion}</p>
-              <p>Accesorios:</p>
-          <ul>
-            {Object.keys(objeto.accesorios).map((accesorio) => (
-              <li key={accesorio}>
-                <strong>{accesorio}</strong>
-                <ul>
-                  {Object.keys(objeto.accesorios[accesorio]).map((diametro) => (
-                    <li key={`${accesorio}-${diametro}`}>
-                      {diametro}: {objeto.accesorios[accesorio][diametro]}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-            </div>
+  <div>
+    <h4>Artefactos:</h4>
+    {objetosConstruidos.map((objeto, index) => (
+      <div key={index}>
+        <h5>{objeto.nombreArtefacto}</h5>
+        <p>Longitud Equivalente: {objeto.presion}</p>
+        <p>Accesorios:</p>
+        <ul>
+          {Object.keys(objeto.accesorios).map((accesorio) => (
+            <li key={accesorio}>
+              <strong>{accesorio}</strong>
+              <ul>
+                {Object.keys(objeto.accesorios[accesorio]).map((diametro) => (
+                  <li key={`${accesorio}-${diametro}`}>
+                    {diametro}: Cantidad: {objeto.accesorios[accesorio][diametro].cantidad}, Presión: {objeto.accesorios[accesorio][diametro].presion}
+                  </li>
+                ))}
+              </ul>
+            </li>
           ))}
-        </div>
-      )}
+        </ul>
+      </div>
+    ))}
+  </div>
+)}
 
       {presion > 0 && (
         <button onClick={guardarObjetoConstruido}>Guardar Objeto</button>      
