@@ -9,7 +9,7 @@ const CompararInputs = () => {
   const compararDatos = () => {
     const updatedInputs = [...inputs];
     for (let i = 0; i < updatedInputs.length; i++) {
-      const distancia = parseInt(updatedInputs[i]['Distancia a medidor']);
+      const distancia = parseFloat(updatedInputs[i]['Distancia a medidor']);
       const consumo = parseInt(updatedInputs[i]['Consumo']);
   
       let diametroProvisorio = '';
@@ -35,10 +35,10 @@ const CompararInputs = () => {
   const compararDatos3 = () => {
     const updatedInputs = [...inputs];
     for (let i = 0; i < updatedInputs.length; i++) {
-      const longEquivalente = parseInt(updatedInputs[i]['Longitud equivalente']);
-      const distanciaMedidor = parseInt(updatedInputs[i]['Distancia a medidor'])
+      const longEquivalente = parseFloat(updatedInputs[i]['Longitud equivalente']);
+      const distanciaMedidor = parseFloat(updatedInputs[i]['Distancia a medidor'])
       const result = longEquivalente + distanciaMedidor;
-      updatedInputs[i]['Longitud rectificada'] = result.toFixed();
+      updatedInputs[i]['Longitud rectificada'] = result.toFixed(2);
     };
 
     setInputs(updatedInputs);
@@ -47,7 +47,7 @@ const CompararInputs = () => {
   const compararDatos2 = () => {
     const updatedInputs = [...inputs];
     for (let i = 0; i < updatedInputs.length; i++) {
-      const distancia = parseInt(updatedInputs[i]['Longitud rectificada']);
+      const distancia = parseFloat(updatedInputs[i]['Longitud rectificada']);
       const consumo = parseInt(updatedInputs[i]['Consumo']);
   
       let diametroFinal = '';
