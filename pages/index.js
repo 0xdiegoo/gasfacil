@@ -135,10 +135,10 @@ const CompararInputs = () => {
       {renderInputs()}
       <div className={styles.buttonsContainer}>
       <button className={styles.button} onClick={dividirInput2}>
-          Dividir
+          Dividir Consumos
         </button>
         <button className={styles.button} onClick={compararDatos}>
-          Diametro Prov
+          Diametro Provisorio
         </button>
       
         <button className={styles.button} onClick={compararDatos3}>
