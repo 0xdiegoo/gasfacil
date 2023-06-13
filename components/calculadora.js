@@ -233,7 +233,7 @@ const CaidaPresion = () => {
 )}
 
       {presion > 0 && (
-        <button onClick={guardarObjetoConstruido}>Guardar Objeto</button>      
+        <button className={styles.calcButton} onClick={guardarObjetoConstruido}>Guardar Objeto</button>      
         )}
     </div>
   );
