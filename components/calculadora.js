@@ -226,14 +226,14 @@ const CaidaPresion = () => {
             </li>
           ))}
         </ul>
-        <button onClick={() => eliminarObjetoConstruido(index)}>Eliminar Artefacto</button>
+        <button className={styles.calcButton} onClick={() => eliminarObjetoConstruido(index)}>Eliminar Artefacto</button>
       </div>
     ))}
   </div>
 )}
 
       {presion > 0 && (
-        <button className={styles.calcButton} onClick={guardarObjetoConstruido}>Guardar Objeto</button>      
+        <button className={styles.calcButton} onClick={guardarObjetoConstruido}>Guardar artefacto</button>      
         )}
     </div>
   );
