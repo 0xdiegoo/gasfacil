@@ -3,6 +3,8 @@ import { diametros } from '../src/diametros';
 import CaidaPresion from '../components/calculadora'
 import { columnNames } from '../src/columnas';
 import styles from './styles.module.css'
+import AdBanner from '../components/adbanner'
+
 const CompararInputs = () => {
   const [inputs, setInputs] = useState(Array(20).fill().map(() => ({})));
 
@@ -79,7 +81,6 @@ const CompararInputs = () => {
   
     setInputs(updatedInputs);
   };
-  
 
   const dividirInput2 = () => {
     const updatedInputs = [...inputs];
@@ -98,9 +99,22 @@ const CompararInputs = () => {
     setInputs(updatedInputs);
   };
 
+  
+
   const renderInputs = () => {
     return (
-      <div className={styles.tableContainer}>
+      <html>
+        <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1909767920526020"
+     crossorigin="anonymous"></script>
+        </head>
+        <body>
+        <div className={styles.tableContainer}>
+        <AdBanner
+          data-ad-slot="9140955160"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
         <table className={styles.table}>
           <thead>
             <tr>
@@ -127,6 +141,10 @@ const CompararInputs = () => {
           </tbody>
         </table>
       </div>
+        </body>
+
+      </html>
+     
     );
   };
 
@@ -151,7 +169,11 @@ const CompararInputs = () => {
       <div className={styles.calculadoraContainer}>
         <CaidaPresion />
       </div>
+
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1909767920526020"
+     crossorigin="anonymous"></script>
     </div>
+    
   );
 };
 
