@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../pages/styles.module.css'
 
 const CaidaPresion = () => {
   const [accesorios, setAccesorios] = useState({
@@ -55,6 +56,12 @@ const CaidaPresion = () => {
         [diametro]: cantidad
       }
     }));
+  };
+
+  const eliminarObjetoConstruido = (index) => {
+    const objetosActualizados = [...objetosConstruidos];
+    objetosActualizados.splice(index, 1);
+    setObjetosConstruidos(objetosActualizados);
   };
 
   const calcularCaidaPresion = () => {
@@ -122,14 +129,14 @@ const CaidaPresion = () => {
   };
 
   return (
-    <div>
+    <div className={styles.calcContainer}>
       <h4>Accesorios:</h4>
-      <div><h3>Artefacto</h3>
+      <div className={styles.titleContainer}><h3>Artefacto</h3>
       <input type="text" value={nombreArtefacto} onChange={handleNombreArtefactoChange} />
 
       </div>
-      
-      <div>
+      <div className={styles.calcSubContainer}>
+      <div className={styles.accContainer}>
         <h5>Codo:</h5>
         {Object.keys(accesoriosValores.codo).map((diametro) => (
           <div key={`codo-${diametro}`}>
@@ -143,7 +150,8 @@ const CaidaPresion = () => {
         ))}
       </div>
 
-      <div>
+
+      <div className={styles.accContainer}>
         <h5>T90:</h5>
         {Object.keys(accesoriosValores.t90).map((diametro) => (
           <div key={`t90-${diametro}`}>
@@ -157,7 +165,7 @@ const CaidaPresion = () => {
         ))}
       </div>
 
-      <div>
+      <div className={styles.accContainer}>
         <h5>T Atraves:</h5>
         {Object.keys(accesoriosValores.tAtraves).map((diametro) => (
           <div key={`tAtraves-${diametro}`}>
@@ -171,7 +179,8 @@ const CaidaPresion = () => {
         ))}
       </div>
 
-      <div>
+          
+      <div className={styles.accContainer}>
         <h5>Llave de Paso:</h5>
         {Object.keys(accesoriosValores.llavePaso).map((diametro) => (
           <div key={`llavePaso-${diametro}`}>
@@ -184,13 +193,18 @@ const CaidaPresion = () => {
           </div>
         ))}
       </div>
+         
+      
+     
+      </div>
 
- 
-      <button onClick={calcularCaidaPresion}>Calcular</button>
+      <div className={styles.calcButtonContainer}>
+             <button className={styles.calcButton} onClick={calcularCaidaPresion}>Calcular Artefacto</button>
 
-      <p>Caída de Presión Total: {presion}</p>
-
+             <p>Caída de Presión Total: {presion}</p>
+          </div>
       {objetosConstruidos.length > 0 && (
+
   <div>
     <h4>Artefactos:</h4>
     {objetosConstruidos.map((objeto, index) => (
@@ -212,6 +226,7 @@ const CaidaPresion = () => {
             </li>
           ))}
         </ul>
+        <button onClick={() => eliminarObjetoConstruido(index)}>Eliminar Artefacto</button>
       </div>
     ))}
   </div>
