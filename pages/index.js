@@ -103,11 +103,6 @@ const CompararInputs = () => {
   const renderInputs = () => {
     return ( 
       <div className={styles.tableContainer}>
-        <AdBanner
-          data-ad-slot="9140955160"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
         <table className={styles.table}>
           <thead>
             <tr>
