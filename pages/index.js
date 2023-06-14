@@ -4,6 +4,8 @@ import CaidaPresion from '../components/calculadora'
 import { columnNames } from '../src/columnas';
 import styles from './styles.module.css'
 import Banner from '../components/banner'
+import Adsterra from '../components/banner0'
+import Adsterra1 from '../components/ads1'
 const CompararInputs = () => {
   const [inputs, setInputs] = useState(Array(20).fill().map(() => ({})));
 
@@ -140,7 +142,8 @@ const CompararInputs = () => {
     <div className={styles.container}>
       <Banner index={0}/>
       {renderInputs()}
-      <Banner index={1}/>
+      <div><Adsterra slot="5f0f0e9389135fa749af872435322af8"/></div>
+      
     
       <div className={styles.buttonsContainer}>
 
@@ -158,7 +161,7 @@ const CompararInputs = () => {
           Diametro Final
         </button>
       </div>
-     <Banner index={2}/>
+      <div><Adsterra slot="5f0f0e9389135fa749af872435322af8"/></div>
       <div className={styles.calculadoraContainer}>
         <CaidaPresion />
       </div>
