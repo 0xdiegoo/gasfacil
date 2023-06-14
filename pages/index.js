@@ -140,7 +140,8 @@ const CompararInputs = () => {
     <div className={styles.container}>
       <Banner/>
       {renderInputs()}
-      <Banner/>
+      <div><Banner/></div>
+    
       <div className={styles.buttonsContainer}>
 
       <button className={styles.button} onClick={dividirInput2}>
@@ -157,7 +158,7 @@ const CompararInputs = () => {
           Diametro Final
         </button>
       </div>
-      <Banner/>
+      <div><Banner/></div>
       <div className={styles.calculadoraContainer}>
         <CaidaPresion />
       </div>
