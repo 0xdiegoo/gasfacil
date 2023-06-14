@@ -4,6 +4,12 @@ import CaidaPresion from '../components/calculadora'
 import { columnNames } from '../src/columnas';
 import styles from './styles.module.css'
 import Banner from '../components/banner'
+import dynamic from 'next/dynamic';
+
+const DynamicBanner = dynamic(() => import('../components/banner'), {
+  ssr: false,
+});
+
 const CompararInputs = () => {
   const [inputs, setInputs] = useState(Array(20).fill().map(() => ({})));
 
@@ -138,9 +144,9 @@ const CompararInputs = () => {
 
   return (
     <div className={styles.container}>
-      <Banner/>
+      <DynamicBanner />
       {renderInputs()}
-      <Banner/>
+      <DynamicBanner />
     
       <div className={styles.buttonsContainer}>
 
@@ -158,11 +164,11 @@ const CompararInputs = () => {
           Diametro Final
         </button>
       </div>
-     <Banner/>
+      <DynamicBanner />
       <div className={styles.calculadoraContainer}>
         <CaidaPresion />
       </div>
-      <Banner/>
+      <DynamicBanner />
     </div>
     
   );

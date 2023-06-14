@@ -1,10 +1,7 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
+import Script from 'next/script';
 
 const Banner = () => {
-  const router = useRouter();
-
   const atOptions = {
     key: '5f0f0e9389135fa749af872435322af8',
     format: 'iframe',
@@ -14,22 +11,21 @@ const Banner = () => {
   };
 
   useEffect(() => {
-    const conf = document.createElement('script');
+    const conf = `window.atOptions = ${JSON.stringify(atOptions)};`;
     const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = `//www.profitabledisplaynetwork.com/${atOptions.key}/invoke.js`;
-    conf.innerHTML = `window.atOptions = ${JSON.stringify(atOptions)}`;
+    script.innerHTML = conf;
+    document.head.appendChild(script);
 
-    document.getElementById('banner-container').appendChild(conf);
-    document.getElementById('banner-container').appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
   }, []);
 
   return (
-    <div id="banner-container">
-      <Head>
-        <script src={`//www.profitabledisplaynetwork.com/${atOptions.key}/invoke.js`} />
-      </Head>
-    </div>
+    <>
+      <Script src={`//www.profitabledisplaynetwork.com/${atOptions.key}/invoke.js`} strategy="afterInteractive" />
+      <div id="banner-container"></div>
+    </>
   );
 };
 
