@@ -1,1 +1,0 @@
-export const columnNames = ['Tramo', 'Longitud Real', 'Distancia a medidor', 'Consumo', 'Diametro Ø Provisorio', 'Longitud equivalente', 'Longitud rectificada', 'Diametro Ø Final', 'Caudal Final', '% Final'];
