@@ -3,6 +3,7 @@ import { diametros } from '../src/diametros';
 import CaidaPresion from '../components/calculadora'
 import { columnNames } from '../src/columnas';
 import styles from './styles.module.css'
+import Banner from '../components/banner'
 const CompararInputs = () => {
   const [inputs, setInputs] = useState(Array(20).fill().map(() => ({})));
 
