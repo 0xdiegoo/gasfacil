@@ -14,7 +14,7 @@ const Banner = () => {
 
     if (bannerRef.current && !bannerRef.current.firstChild) {
       const iframe = document.createElement('iframe');
-      iframe.src = `//www.profitabledisplaynetwork.com/${atOptions.key}/invoke.html`;
+      iframe.src = `//www.profitabledisplaynetwork.com/${atOptions.key}/invoke.js`;
       iframe.height = atOptions.height;
       iframe.width = atOptions.width;
       iframe.frameBorder = 0;
