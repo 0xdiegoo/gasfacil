@@ -22,7 +22,7 @@ const Banner= () => {
     }
 }, [])
 
-    return <div ref={bannerRef}></div>
+    return <div ref={bannerRef} id={`banner-${index}`}></div>
 }
 
 export default Banner;
