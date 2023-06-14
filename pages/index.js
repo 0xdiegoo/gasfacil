@@ -3,6 +3,7 @@ import { diametros } from '../src/diametros';
 import CaidaPresion from '../components/calculadora'
 import { columnNames } from '../src/columnas';
 import styles from './styles.module.css'
+import Banner from '../components/banner'
 const CompararInputs = () => {
   const [inputs, setInputs] = useState(Array(20).fill().map(() => ({})));
 
@@ -132,8 +133,11 @@ const CompararInputs = () => {
 
   return (
     <div className={styles.container}>
+      <Banner/>
       {renderInputs()}
+      <Banner/>
       <div className={styles.buttonsContainer}>
+
       <button className={styles.button} onClick={dividirInput2}>
           Dividir Consumos
         </button>
@@ -148,9 +152,11 @@ const CompararInputs = () => {
           Diametro Final
         </button>
       </div>
+      <Banner/>
       <div className={styles.calculadoraContainer}>
         <CaidaPresion />
       </div>
+      <Banner/>
     </div>
   );
 };
