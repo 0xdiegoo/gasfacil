@@ -101,14 +101,8 @@ const CompararInputs = () => {
   
 
   const renderInputs = () => {
-    return (
-      <html>
-        <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1909767920526020"
-     crossorigin="anonymous"></script>
-        </head>
-        <body>
-        <div className={styles.tableContainer}>
+    return ( 
+      <div className={styles.tableContainer}>
         <AdBanner
           data-ad-slot="9140955160"
           data-ad-format="auto"
@@ -140,9 +134,9 @@ const CompararInputs = () => {
           </tbody>
         </table>
       </div>
-        </body>
+   
 
-      </html>
+   
      
     );
   };
