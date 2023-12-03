@@ -19,7 +19,13 @@ const CaidaPresion = () => {
       25: 0.75,
       32: 0.96,
       38: 1.14,
-      51: 1.53
+      51: 1.53,
+      63: 1.89,
+      76: 2.28,
+      101: 3.03,
+      127: 3.81,
+      152: 4.56,
+      178: 5.34
     },
     t90: {
       13: 0.78,
@@ -27,7 +33,13 @@ const CaidaPresion = () => {
       25: 1.50,
       32: 1.92,
       38: 2.28,
-      51: 3.06
+      51: 3.06,
+      63: 3.78,
+      76: 4.56,
+      101: 6.06,
+      127: 7.62,
+      152: 9.12,
+      178: 10.68
     },
     tAtraves: {
       13: 0.26,
@@ -35,7 +47,13 @@ const CaidaPresion = () => {
       25: 0.50,
       32: 0.64,
       38: 0.76,
-      51: 1.02
+      51: 1.02,
+      63: 1.26,
+      76: 1.52,
+      101: 2.02,
+      127: 2.54,
+      152: 3.04,
+      178: 3.56
     },
     llavePaso: {
       13: 1.30,
@@ -43,7 +61,13 @@ const CaidaPresion = () => {
       25: 2.50,
       32: 3.20,
       38: 3.80,
-      51: 5.10
+      51: 5.10,
+      63: 6.30,
+      76: 7.60,
+      101: 10.10,
+      127: 12.70,
+      152: 15.20,
+      178: 17.80
     }
   };
 
@@ -78,7 +102,7 @@ const CaidaPresion = () => {
       }
     }
 
-    setPresion(presionTotal);
+    setPresion(Number(presionTotal.toFixed(2)));
   };
 
   const guardarObjetoConstruido = () => {
@@ -210,7 +234,7 @@ const CaidaPresion = () => {
     {objetosConstruidos.map((objeto, index) => (
       <div key={index}>
         <h5>{objeto.nombreArtefacto}</h5>
-        <p>Longitud Equivalente: {objeto.presion}</p>
+        <p>Longitud Equivalente: {objeto.presion.toFixed(2)}</p>
         <p>Accesorios:</p>
         <ul>
           {Object.keys(objeto.accesorios).map((accesorio) => (
